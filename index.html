@@ -9,7 +9,6 @@
 				$.get({
 					url: "/powerStatus",
 					success: function( data ) {
-						alert("update");
 						$(".screen").css("background-color", data == true ? "#dcff71" : "#ffc071");
 						$(".screen").find(".textOnScreen").children().html(data == true ? "online" : "offline");
 					},
