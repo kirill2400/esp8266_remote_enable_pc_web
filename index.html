@@ -53,9 +53,6 @@
 			}
 
 			$(document).ready(function() {
-				UpdateStatus();
-				var intervalId = window.setInterval(UpdateStatus, 5000);
-
 				$(".startButton").click(function() {
 					PowerOn();
 				});
@@ -63,6 +60,9 @@
 				$(".forceShutDownButton").click(function() {
 					ForcePowerOff();
 				});
+
+				UpdateStatus();
+				var intervalId = window.setInterval(UpdateStatus, 5000);
 			});
 		</script>
 	</head>
