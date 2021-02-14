@@ -4,13 +4,52 @@
 		<link rel="stylesheet" href="style.css?v=0.1">
 
 		<script>
-			$(document).ready(function() {
-				var online = false;
+			function UpdateStatus()
+			{
+				$.get({
+					url: "/powerStatus",
+					success: function( data ) {
+						alert("update");
+						$(".screen").css("background-color", data == true ? "#dcff71" : "#ffc071");
+						$(".screen").find(".textOnScreen").children().html(data == true ? "online" : "offline");
+					},
+					async: false
+				});
+			}
 
-				$(".startButton,.forceShutDownButton").click(function() {
-					online = !online;
-					$(this).parents(".screen").css("background-color", online ? "#dcff71" : "#ffc071");
-					$(this).parents(".screen").find(".textOnScreen").children().html(online ? "online" : "offline");
+			function PowerOn()
+			{
+				$.get({
+					url: "/powerOn",
+					success: function( data ) {
+						if (data == true)
+							UpdateStatus();
+					},
+					async: false
+				});
+			}
+
+			function ForcePowerOff()
+			{
+				$.get({
+					url: "/forcePowerOff",
+					success: function( data ) {
+						if (data == true)
+							UpdateStatus();
+					},
+					async: false
+				});
+			}
+
+			$(document).ready(function() {
+				UpdateStatus();
+
+				$(".startButton").click(function() {
+					PowerOn();
+				});
+
+				$(".forceShutDownButton").click(function() {
+					ForcePowerOff();
 				});
 			});
 		</script>
