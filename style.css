@@ -28,8 +28,6 @@
 
 .textOnScreen {
 	width: 60%;
-	font-size: 36pt;
-	font-family: 'digital font';
 
 	background: linear-gradient(0deg, rgb(136 136 136) 0%, rgb(255 255 255) 100%);
 	box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
@@ -39,6 +37,16 @@
 	margin: 5px;
 	background-color: #13A10E;
 	color: black;
+	
+	font-size: 3vw;
+	font-family: 'digital font';
+}
+
+@media screen and (max-width: 1080px) {
+	.textOnScreen > div {
+		padding: 5px;
+		padding-bottom: 0.5vh;
+	}
 }
 
 .buttons {
