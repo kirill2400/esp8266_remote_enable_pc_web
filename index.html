@@ -11,6 +11,18 @@
 					success: function( data ) {
 						$(".screen").css("background-color", data == true ? "#dcff71" : "#ffc071");
 						$(".screen").find(".textOnScreen").children().html(data == true ? "online" : "offline");
+
+						var startButton = $(".startButton");
+						if (data == true)
+						{
+							startButton.addClass("forceShutDownButton");
+							startButton.html("off");
+						}
+						else
+						{
+							startButton.removeClass("forceShutDownButton");
+							startButton.html("on");
+						}
 					},
 					async: false
 				});
